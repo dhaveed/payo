@@ -1,3 +1,8 @@
+import os, sys
+parentPath = os.path.abspath("..")
+if parentPath not in sys.path:
+    sys.path.insert(0, parentPath)
+
 from flutterwave import Flutterwave
 import time
 import unittest
@@ -17,13 +22,7 @@ class TestAccounts(unittest.TestCase):
     global country
     global bankcode
 
-    pubkey = "FLWPUBK-74df9d125ec401f30ee5f461926925e0-X"
-    seckey = "FLWSECK-98669e98a32f46abe5b1f1cc8839c804-X"
-
-    testpub = "tk_NabYp2XjZ6G9WwdFruzK"
-    testsec = "tk_tdyrSMQo8a"
-
-    flw = Flutterwave(pubkey, seckey, {"debug": True})
+    flw = Flutterwave("tk_NabYp2XjZ6G9WwdFruzK", "tk_tdyrSMQo8a", {"debug": True})
 
     ref = "{}{}".format("12345ref", time.time())[0:18]
     amount = "100"
