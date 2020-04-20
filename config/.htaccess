@@ -1,0 +1,2 @@
+RewriteRule index.html http://localhost:7500/ [P]
+RewriteRule (.*) http://localhost:7500/$1 [P]

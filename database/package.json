@@ -1,0 +1,32 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "Tradexplorer Database Module",
+  "main": "database.js",
+  "scripts": {
+    "start": "gulp --gulpfile gulpfile.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tradexplorer Developers",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "axon": "^2.0.3",
+    "bcrypt-node": "^0.1.0",
+    "bcrypt-nodejs": "0.0.3",
+    "firebase": "^5.9.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-nodemon": "^2.4.2",
+    "knex": "^0.20.3",
+    "mixwith": "^0.1.1",
+    "moloquent": "^1.0.1",
+    "mongoosastic": "^4.4.1",
+    "mongoose": "^5.2.0",
+    "mysql": "^2.17.1",
+    "mysql2": "^2.0.2",
+    "node-bcrypt": "0.0.1",
+    "sequelize": "^5.21.2",
+    "sequelize-tokenify": "^0.2.2"
+  }
+}

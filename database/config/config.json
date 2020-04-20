@@ -1,0 +1,32 @@
+{
+  "development": {
+    "username": "root",
+    "password": "LORDflex22",
+    "database": "tradeExplorer",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "multipleStatements": true
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": "LORDflex22",
+    "database": "tradeExplorer",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "multipleStatements": true
+    }
+  },
+  "production": {
+    "username": "root",
+    "password": "LORDflex22",
+    "database": "tradeExplorer",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+      "multipleStatements": true
+    }
+  }
+}

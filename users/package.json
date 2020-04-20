@@ -1,0 +1,27 @@
+{
+  "name": "users",
+  "version": "1.0.0",
+  "description": "Tailorgang User Module",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp --gulpfile gulpfile.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tailorgang Nugitech Developers",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "axon": "^2.0.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "crypto": "^1.0.1",
+    "express": "^4.16.3",
+    "express-async-handler": "^1.1.3",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-nodemon": "^2.4.2",
+    "joi": "^13.4.0",
+    "multer": "^1.3.1",
+    "mysql": "^2.17.1"
+  }
+}

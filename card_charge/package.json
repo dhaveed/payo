@@ -1,0 +1,34 @@
+{
+  "name": "classes",
+  "version": "1.0.0",
+  "description": "Tradexplorer product Module",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp --gulpfile gulpfile.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tradexplorer  Developers",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "axon": "^2.0.3",
+    "body-parser": "^1.18.3",
+    "busboy": "^0.3.1",
+    "cloudinary": "^1.18.1",
+    "cors": "^2.8.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.3",
+    "express-fileupload": "^1.1.6",
+    "flutterwave-node": "^1.0.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-nodemon": "^2.4.2",
+    "joi": "^13.4.0",
+    "moment": "^2.22.2",
+    "multer": "^1.4.2",
+    "mysql": "^2.17.1",
+    "underscore": "^1.9.1",
+    "vimeo": "^2.1.0"
+  }
+}
