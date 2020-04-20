@@ -31,6 +31,12 @@ You will need [Node.js](http://nodejs.org) **version 8+**, [Java Runtime Environ
 After cloning the repo, run:
 
 ``` bash
+$ cd  SERVICE_NAME # eg cd auth
+```
+
+then 
+
+``` bash
 $ npm install # install the dependencies of the project
 ```
 
