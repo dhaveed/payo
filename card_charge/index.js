@@ -12,7 +12,16 @@ app.use(cors())
 app.use(bp.json());
 app.use(bp.urlencoded({extended : true}));
 
-app.get('/product',  (req,res)=>{
+app.use(Fingerprint({
+	parameters:[
+		// Defaults
+		Fingerprint.useragent,
+		Fingerprint.acceptHeaders,
+		Fingerprint.geoip,
+	]
+}))
+
+app.get('/card_charge',  (req,res)=>{
 	res.sendFile(path.join(__dirname, 'public/index.html'))
 })
 
