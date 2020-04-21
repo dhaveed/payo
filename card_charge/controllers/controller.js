@@ -27,12 +27,13 @@ module.exports = class Controller{
     })
   }
 
-  static validateTransactionSchema(){
+  static get ValidateTransactionSchema(){
     return joi.object().keys({
       transaction_reference: joi.string().required(),
       otp: joi.string().required(),
     })
   }
+
 
   static CardCharge(req, res, next){
     rave.Card.charge(
