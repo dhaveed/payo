@@ -1,13 +1,14 @@
 const $c = require('../requesters/database');
 const joi = require('joi')
+var request = require('request');
 require('dotenv').config()
 const Ravepay = require('./../../flutterwave-node');
-const rave = new Ravepay(process.env.RAVE_PUBLICK_KEY, process.env.RAVE_SECRET_KEY, process.env.PRODUCTION_FLAG);
+const rave = new Ravepay(process.env.RAVE_PUBLICK_KEY, process.env.RAVE_SECRET_KEY, process.env.RAVE_BASE_URL_DEMO);
 const Fingerprint = require('express-fingerprint')
  
 module.exports = class Controller{
 
-  static get createSchema(){
+  static get CardChargeSchema(){
     return joi.object().keys({
       apikey: joi.string().required(),
       secretekey: joi.string().required(),
@@ -23,6 +24,13 @@ module.exports = class Controller{
       firstname: joi.string().required(),
       lastname: joi.string().required(),
       redirect_url: joi.string().required(),
+    })
+  }
+
+  static validateTransactionSchema(){
+    return joi.object().keys({
+      transaction_reference: joi.string().required(),
+      otp: joi.string().required(),
     })
   }
 
@@ -52,17 +60,18 @@ module.exports = class Controller{
             "IP" : req.headers['x-forwarded-for'] || req.connection.remoteAddress
           }
     )).then(resp => {
-      // console.log(resp.body);
-      rave.Card.validate({
-            "transaction_reference":resp.body.data.flwRef,
-            "otp":12345
-      }).then(response => {
-            console.log(response.body.data.tx);
-            res.json(response);
-      })
+      console.log(resp.body);
+      
     }).catch(err => {
           console.log(err);
           res.status(500).json(err.toString())
     })
+  }
+
+  static validateTransaction(req, res){
+    rave.Card.validate(req.body).then(response => {
+            console.log(response.body.data.tx);
+            res.json(response);
+      })
   }
 }
