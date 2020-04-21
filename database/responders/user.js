@@ -5,9 +5,7 @@ let responder = socket('rep');
 
 const Model = {
   User : require('../classes/users.class'),
-  Products : require('../classes/product.class'),
-  Transaction : require('../classes/transactions.class'),
-  Wallet : require('../classes/wallet.class')
+  Transaction : require('../classes/transactions.class')
 }
 
 

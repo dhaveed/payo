@@ -61,7 +61,8 @@ module.exports = class Controller{
             "IP" : req.headers['x-forwarded-for'] || req.connection.remoteAddress
           }
     )).then(resp => {
-      console.log(resp.body);
+      // console.log(resp.body);
+      res.json(resp);
       
     }).catch(err => {
           console.log(err);
