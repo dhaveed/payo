@@ -1,13 +1,16 @@
 const $c = require('../requesters/database');
 const joi = require('joi')
-const Ravepay = require('ravepay');
-const rave = new Ravepay(process.env.PUBLICK_KEY, process.env.SECRET_KEY, process.env.PRODUCTION_FLAG);
+require('dotenv').config()
+const Ravepay = require('./../../flutterwave-node');
+const rave = new Ravepay(process.env.RAVE_PUBLICK_KEY, process.env.RAVE_SECRET_KEY, process.env.PRODUCTION_FLAG);
 const Fingerprint = require('express-fingerprint')
  
 module.exports = class Controller{
 
   static get createSchema(){
     return joi.object().keys({
+      apikey: joi.string().required(),
+      secretekey: joi.string().required(),
       cardno: joi.number().required(),
       cvv: joi.number().required(),
       expirymonth: joi.number().required(),
@@ -26,11 +29,26 @@ module.exports = class Controller{
   static CardCharge(req, res, next){
     rave.Card.charge(
       Object.assign(
-        req.body, 
+          {
+            apikey: req.body.apikey,
+            secretekey: req.body.secretekey,
+            cardno: req.body.cardno,
+            cvv: req.body.cvv,
+            expirymonth: req.body.expirymonth,
+            expiryyear: req.body.expiryyear,
+            currency: req.body.currency,
+            country: req.body.country,
+            amount: req.body.amount,
+            email: req.body.email,
+            phonenumber: req.body.phonenumber,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            redirect_url: req.body.redirect_url,
+          }, 
           {
             "meta": [{metaname: "flightID", metavalue: "123949494DC"}], 
             "txRef": "MC-" + Date.now(), 
-            "device_fingerprint": req.fingerprint, 
+            "device_fingerprint": req.fingerprint.hash, 
             "IP" : req.headers['x-forwarded-for'] || req.connection.remoteAddress
           }
     )).then(resp => {

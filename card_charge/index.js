@@ -1,11 +1,12 @@
 const app = require('express')();
 const bp = require('body-parser');
 const cors = require('cors');
+var Fingerprint = require('express-fingerprint')
 // const verifyToken = require('./utils/verifyToken');
 const routes = require('./routes/chargecardRoute');
 const path = require('path');
 const port = 2000;
-
+require('dotenv').config()
 
 app.use(cors())
 // app.use(verifyToken);
