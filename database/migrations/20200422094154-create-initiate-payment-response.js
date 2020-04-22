@@ -10,6 +10,9 @@ module.exports = {
       },
       id: {
         type: Sequelize.STRING
+      },      
+      statusCode: {
+        type: Sequelize.STRING
       },
       status: {
         type: Sequelize.STRING

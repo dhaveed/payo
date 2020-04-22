@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const initiate_payment_response = sequelize.define('initiate_payment_response', {
     id: DataTypes.STRING,
+    statusCode: DataTypes.STRING,
     status: DataTypes.STRING,
     message: DataTypes.STRING,
     txRef: DataTypes.STRING,

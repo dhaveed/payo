@@ -3,7 +3,7 @@ const joi = require('joi')
 // const joi = require('@hapi/joi');
 var request = require('request');
 require('dotenv').config()
-const Ravepay = require('./../../flutterwave-node');
+const Ravepay = require('./../../flutterwave');
 const rave = new Ravepay(process.env.RAVE_PUBLICK_KEY, process.env.RAVE_SECRET_KEY, process.env.RAVE_BASE_URL_DEMO);
 const Fingerprint = require('express-fingerprint')
  
@@ -67,6 +67,7 @@ module.exports = class Controller{
       // console.log(resp.body);
       var initiateTransRespone = {
         "id" : resp.body.data.id,
+        "statusCode": resp.statusCode,
         "status": resp.body.status,
         "message": resp.body.message,
         "txRef": resp.body.data.txRef,
@@ -103,7 +104,7 @@ module.exports = class Controller{
         "deletedAt": resp.body.data.deletedAt,
         "customerId": resp.body.data.customerId,
         "AccountId": resp.body.data.AccountId,
-        "customercandosubsequentnoauth": resp.body.customercandosubsequentnoauth
+        "customercandosubsequentnoauth": resp.body.data.customercandosubsequentnoauth
       }
 
       var CustomerTransRespone = {
