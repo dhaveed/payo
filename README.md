@@ -9,6 +9,13 @@ Hi! I'm really excited that you are interested in contributing to sonOFAnton Cpa
 - [Project Structure](#project-structure)
 
 
+## Coding  Convetion and rules
+
+-  we are using snake case all through the project
+-  never push to master 
+-  all database queries must be executed from the database service, while you call the method from the service you are working on
+
+
 ## Pull Request Guidelines
 
 - The `master` branch is just  snapshot of What is Going to be Released when Hosted. All development should be done in dedicated branches. **Do submit PRs against the `master` branch Only when sure on the complition of a particular project.**
@@ -26,9 +33,20 @@ Hi! I'm really excited that you are interested in contributing to sonOFAnton Cpa
   - Provide a detailed description of the bug in the PR. Live demo preferred.
   - Add appropriate test coverage if applicable.
 
-## Development Setup
+## REQUIREMENT 
 
 You will need [Node.js](http://nodejs.org) **version 8+**, [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (for running Selenium server during e2e tests) and [yarn](https://yarnpkg.com/en/docs/install), and A browser obviously.
+
+
+You would also need [Sequlize-Cli](https://www.npmjs.com/package/sequelize-cli), you can install usiing the command
+
+```
+	npm i sequelize-cli
+```
+
+
+## Development Setup
+
 
 After cloning the repo, run:
 

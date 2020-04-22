@@ -58,17 +58,13 @@ function service(data, _rave) {
 		})
 		.then(params => {
 
-
 			if (params.include_integrity_hash) {
-
 				delete params.include_integrity_hash;
 				// console.log("params!!!", params);
 				var integrity_hash = _rave.getIntegrityHash(params, _rave.getPublicKey(), _rave.getSecretKey());
 				params.QUERY_STRING_DATA = JSON.parse(JSON.stringify(params));
 				params.QUERY_STRING_DATA.integrity_hash = integrity_hash;
-
 				//console.log(params);
-
 			}
 			// console.log(params);
 			var encrypted = _rave.encrypt(params);

@@ -21,19 +21,10 @@ module.exports = {
       phone: {
         type: Sequelize.STRING
       },
-      following: {
-        type: Sequelize.STRING
-      },
       password: {
         type: Sequelize.STRING
       },
       accountType: {
-        type: Sequelize.STRING
-      },
-      lat: {
-        type: Sequelize.STRING
-      },
-      lng: {
         type: Sequelize.STRING
       },
       pictureUrl: {

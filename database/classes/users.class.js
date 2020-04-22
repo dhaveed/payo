@@ -1,5 +1,4 @@
-const {mix} = require('mixwith')
-// this = require('../models/users');
+
 const Login = require('./response');
 const Sequelize = require("sequelize");
 const raw = require('../models');
@@ -11,12 +10,11 @@ const trans = require('../models').transactions;
  
 const bioString =  (val) => {
     let bios = [
-      {"info1" : ["$fullname", `dropcode, middle ware dev.`]},
-      {"info2" : ["fullname", ` Oyink frontend dev`]},
-      {"info3" : ["fullname" , `Adeojo Emmanuel imm the professor backend dev`]}
+      {"info3" : ["fullname" , `Adeojo Emmanuel imm,  professor backend dev`]}
     ]
     return bios[val]
 }
+
  
 
 module.exports = class userModelClass extends Sequelize.Model {

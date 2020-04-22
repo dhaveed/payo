@@ -10,6 +10,7 @@
   "author": "Tradexplorer  Developers",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "axios": "^0.18.0",
     "axon": "^2.0.3",
     "body-parser": "^1.18.3",
