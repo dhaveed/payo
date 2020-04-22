@@ -103,5 +103,5 @@ Commit messages should follow the [commit message convention](./COMMIT_CONVENTIO
   
 ## Credits
 
-Thank you to all the people who have, who are, who Will  contribute to sonOFAnton Cpass project!
+Thank you to all the people who have, who are, who Will  contribute to PAYO  project!
 
