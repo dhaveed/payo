@@ -5,9 +5,10 @@ let responder = socket('rep');
 
 const Model = {
   User : require('../classes/users.class'),
-  Transaction : require('../classes/transactions.class')
+  initiate_payment : require('../classes/initiate_payment.class'),
+  business_settings : require('../classes/business_settings.class')
 }
-
+ 
 
 module.exports = (port) => {
     responder.bind(port);
