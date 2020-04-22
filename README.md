@@ -11,7 +11,7 @@ Hi! I'm really excited that you are interested in contributing to sonOFAnton Cpa
 
 ## Coding  Convetion and rules
 
--  we are using snake case all through the project
+-  we are using snake case all through the project e.g (user_name)
 -  never push to master 
 -  all database queries must be executed from the database service, while you call the method from the service you are working on
 
