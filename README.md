@@ -60,6 +60,17 @@ then
 $ npm install # install the dependencies of the project
 ```
 
+go to the database service
+
+```
+$ cd database
+```
+
+and execute 
+```
+sequelize db:migrate
+```
+
 ### Committing Changes
 
 Commit messages should follow the [commit message convention](./COMMIT_CONVENTION.md) so that changelogs can be automatically generated. Commit messages will be automatically validated upon commit. If you are not familiar with the commit message convention, you can use `npm run commit` instead of `git commit`, which provides an interactive CLI for generating proper commit messages.
