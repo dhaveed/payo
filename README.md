@@ -41,7 +41,7 @@ You will need [Node.js](http://nodejs.org) **version 8+**, [Java Runtime Environ
 You would also need [Sequlize-Cli](https://www.npmjs.com/package/sequelize-cli), you can install usiing the command
 
 ```
-	npm i sequelize-cli
+npm i sequelize-cli -g
 ```
 
 

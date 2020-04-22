@@ -12,7 +12,7 @@ Messages must be matched by the following regex:
 
 #### Examples
 
-Appears under "Bug Fixes" header, `v-model` subheader, with a link to issue #28:
+Appears under "Bug Fixes" header, `v-model` subheader
 
 ```
 fix(v-model): handle events on blur
