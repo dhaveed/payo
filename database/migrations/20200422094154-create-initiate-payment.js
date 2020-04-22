@@ -1,15 +1,15 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('initiate_payment_responses', {
-      cid: {
+    return queryInterface.createTable('initiate_payment', {
+      pid: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       id: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },      
       statusCode: {
         type: Sequelize.STRING
@@ -136,6 +136,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('initiate_payment_responses');
+    return queryInterface.dropTable('initiate_payment');
   }
 };

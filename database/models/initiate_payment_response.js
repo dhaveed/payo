@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const initiate_payment_response = sequelize.define('initiate_payment_response', {
+  const initiate_payment_response = sequelize.define('initiate_payment', {
+    pid: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+    },
     id: DataTypes.STRING,
     statusCode: DataTypes.STRING,
     status: DataTypes.STRING,

@@ -1,6 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const customers_in_payment_response = sequelize.define('customers_in_payment_response', {
+  const customers_in_payment_response = sequelize.define('customers_response', {
+    pid: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+    },
     customer: DataTypes.STRING,
     id: DataTypes.STRING,
     phone: DataTypes.STRING,

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('customers_in_payment_responses', {
+    return queryInterface.createTable('customers_responses', {
       pid: {
         allowNull: false,
         autoIncrement: true,
@@ -49,6 +49,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('customers_in_payment_responses');
+    return queryInterface.dropTable('customers_responses');
   }
 };
