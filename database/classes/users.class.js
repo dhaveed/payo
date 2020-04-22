@@ -3,8 +3,6 @@ const Login = require('./response');
 const Sequelize = require("sequelize");
 const raw = require('../models');
 const db = require('../models').users;
-const ref = require('../models').referals;
-const trans = require('../models').transactions;
 
 
  
@@ -21,46 +19,7 @@ module.exports = class userModelClass extends Sequelize.Model {
   static getById({id, login, ...query}){
       return db.findOne({where: {id: id}})
   }
-
-  static async followSeller(userid, data){
-    return new Promise((resolve, reject) =>{
-      db.findOne({"where":{"id" : userid}})
-      .then(user=>{
-        if(user){
-          user.update({"following":data});
-          return user.save();
-        }
-        return Promise.reject({user : "failed to find user"})
-      },reject)
-      .then(resolve, reject)
-      .catch(reject)
-    })
-  }
-
-
-  static dashboardinfo({userid, login, ...query}){
-      return trans.findAll({where: {userid: userid}})
-  }
-  
-  static createTransaction(body){
-      return trans.create(body);
-  }
-
-  static getrefere(query){
-    return new Promise((resolve, reject) => {
-      Promise.all([
-        ref.findAll({ 
-          where: query
-        })
-      ]).then(([referee])  => {
-          return Promise.all([
-              resolve(referee)   
-          ])
-      }, reject).then(resolve, reject)
-      .catch(reject)
-    })
-   }
-
+ 
 	static updateEmail(email){
 		return new Promise((resolve, reject) => {
 		  Promise.all([
@@ -74,19 +33,6 @@ module.exports = class userModelClass extends Sequelize.Model {
 		})
 	}
 
-
-  // static userpics(id, picname){
-  //   return new Promise((resolve, reject) => {
-  //     Promise.all([
-  //       db.findOne({where: {"id": id}})
-  //     ]).then(([users]) => {
-  //       user.update({"pictureUrl":picname});
-  //       return user.save();
-  //     }, reject)
-  //     .then(resolve, reject)
-  //     .catch(reject)
-  //   })
-  // }
 
   static async userpics(id, picname){
     return new Promise((resolve, reject) =>{
@@ -171,31 +117,9 @@ module.exports = class userModelClass extends Sequelize.Model {
     })
   }
 
-  static countries(){
-    return new Promise((resolve, reject)=>{
-      Country.find()
-      .then(countries => {
-        resolve(countries)
-      })
-      .catch(err => {
-        reject(err)
-      })
-    })
-  }
 
-  static refcreate(referer, downline){
-    return new Promise((resolve, reject) => {
-        return Promise.all([
-          ref.create({"referals":referer, "downline":downline})
-        ])
-      .then(resolve, reject)
-      .catch(reject =>  console.log("i dont like it here -1"))
-    })
-  }
 
   static valid(id){
-    // console.log(id)
-    // console.log("got to validation check");
     return new Promise((resolve, reject) => {
       db.findOne({"where": {"id" : id}})
       .then(login => login ? resolve(login) : reject(login), reject)
@@ -314,16 +238,7 @@ module.exports = class userModelClass extends Sequelize.Model {
       },reject)
     .catch(Promise.reject)
   }
-
-  // static async verify(user, number){
-  //     let match = await db.findOne({id : user});
-  //     if(!match) return null;
-  //     if(match && match.status == number){
-  //       match.set({verification : {number, status : true, date : Date.now()}})
-  //       return match.save();
-  //     }
-  //     return Promise.reject({number : 'incorrect verification number entered'})
-  // }  
+ 
 
   static async verify(user, number){
     return new Promise((resolve, reject) =>{
