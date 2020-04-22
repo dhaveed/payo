@@ -133,7 +133,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    },{
+    engine: 'MYISAM', // default: 'InnoDB'
+    charset: 'latin1' // default: null
+  });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('initiate_payment');

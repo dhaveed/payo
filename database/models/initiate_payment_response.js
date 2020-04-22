@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     id: DataTypes.STRING,
     statusCode: DataTypes.STRING,
-    status: DataTypes.STRING,
+    status: DataTypes.TEXT,
     message: DataTypes.STRING,
     txRef: DataTypes.STRING,
     orderRef: DataTypes.STRING,
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     chargeResponseMessage: DataTypes.STRING,
     authModelUsed: DataTypes.STRING,
     currency: DataTypes.STRING,
-    IP: DataTypes.STRING,
+    IP: DataTypes.TEXT,
     narration: DataTypes.STRING,
     status: DataTypes.STRING,
     vbvrespmessage: DataTypes.STRING,
@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     customerId: DataTypes.STRING,
     AccountId: DataTypes.STRING,
     customercandosubsequentnoauth: DataTypes.STRING
-  }, {});
+  }, { engine: 'MyISAM CHARACTER SET latin1' });
   initiate_payment_response.associate = function(models) {
     // associations can be defined here
   };
