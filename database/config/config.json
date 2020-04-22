@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "LORDflex22",
-    "database": "tradeExplorer",
+    "password": "",
+    "database": "payo",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "dialectOptions": {
@@ -11,8 +11,8 @@
   },
   "test": {
     "username": "root",
-    "password": "LORDflex22",
-    "database": "tradeExplorer",
+    "password": "",
+    "database": "payo",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "dialectOptions": {
@@ -21,8 +21,8 @@
   },
   "production": {
     "username": "root",
-    "password": "LORDflex22",
-    "database": "tradeExplorer",
+    "password": "",
+    "database": "payo",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "dialectOptions": {
