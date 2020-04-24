@@ -239,10 +239,10 @@ module.exports = class baseController{
 	  res.status(500).json(err);
 	})
   }  
-   
+    
 
   static getuser(req, res){
-    $u.User.getOne({where: {
+    $u.User.fetchOne({where: {
       id: req.params.id
     }}).then((user) => {
       res.json(user)
