@@ -1,7 +1,7 @@
 const {mix} = require('mixwith')
 
 const Sequelize = require("sequelize");
-const db = require('../models').initiate_payment_response;
+const db = require('../models').initiate_payment;
 
 
 
