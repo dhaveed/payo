@@ -9,3 +9,5 @@ Sequelize Commands
 	sequelize model:create --name business_settings --attributes user_id:Number,api_key:string,secrete_key:string,enc_key:string
 
 
+
+	sequelize model:create --name customer_from_response --attributes customer:string,id:string,phone:string,fullName:string,customertoken:string,email:string,createdAt:string,updatedAt:string,deletedAt:string,AccountId:string
