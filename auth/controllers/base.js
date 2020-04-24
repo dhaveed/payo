@@ -242,9 +242,9 @@ module.exports = class baseController{
    
 
   static getuser(req, res){
-    $u.User.getOne({
+    $u.User.getOne({where: {
       id: req.params.id
-    }).then((user) => {
+    }}).then((user) => {
       res.json(user)
     })
     .catch(err => {

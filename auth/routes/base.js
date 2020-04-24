@@ -3,7 +3,7 @@
 const router = require('express').Router();
 const Controller = require('../controllers/base');
 const Validator = require('../utils/validator');
-const AdminController = require('../controllers/admin');
+// const AdminController = require('../controllers/admin');
 
 //router.post('/adminlogin', Validator(AdminController.loginSchema), AdminController.login)
 
