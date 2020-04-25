@@ -301,19 +301,18 @@ module.exports = class baseController {
           sgMail.setApiKey(process.env.SENDGRID_API_KEY);
           const msg = {
             to: user.email,
-            from: "test@example.com",
+            from: "emmannuel.adeojo.ibk@gmail.com",
             subject: "Sending with Twilio SendGrid is Fun",
             text: text,
             html: html,
           };
           //ES6
-          sgMail.send(msg).then(
-            () => {},
-            (error) => {
+          sgMail.send(msg).then(() => {
+          	res.json(baseController.attachToken(user, login));
+          },(error) => {
               console.error(error);
-
               if (error.response) {
-                console.error(error.response.body);
+              	res.status(400).json(error.response.body);
               }
             }
           );
@@ -324,7 +323,7 @@ module.exports = class baseController {
           //   text,
           //   html
           // );
-          res.json(baseController.attachToken(user, login));
+          
         } catch (error) {
           console.log(error);
         }
