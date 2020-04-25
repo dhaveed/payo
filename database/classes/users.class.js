@@ -265,7 +265,6 @@ module.exports = class userModelClass extends Sequelize.Model {
   }
 
   static getOne(query){
-      console.log(db.findOne(query))
       return db.findOne(query).then(([user]) => Promise.resolve(user || null))
   }
 

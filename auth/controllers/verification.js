@@ -38,7 +38,7 @@ module.exports = class verificationController{
   static verify(req, res){
     $u.User.verify(req.params.user, req.params.token).then(user =>  {
 		  // res.json(user);
-      res.redirect('http://142.93.207.91/activation-successful');
+      res.redirect('localhost:1000/auth/login');
 	  }, err => {
       console.log(err);
       res.status(400).json(err)

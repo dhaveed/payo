@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@pusher/chatkit-server": "^0.12.2",
+    "@sendgrid/client": "^7.0.1",
     "@sendgrid/mail": "^6.4.0",
     "assert": "^2.0.0",
     "async": "^2.6.1",
