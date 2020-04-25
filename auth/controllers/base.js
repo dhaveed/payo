@@ -295,7 +295,7 @@ module.exports = class baseController {
           //     if (response) console.log("Email Sent to " + user.email);
           //   }
           // );
-          const url = `http://localhost:1000/auth/${user.email}/${user.status}/${apptype}`;
+          const url = `http://localhost:1000/auth/verification/${user.email}/${user.status}/${apptype}`;
           const text = `Please click on this link to confirm your email: <a href="${url}">${url}</a>`;
           const html = `Please click on this link to confirm your email: <a href="${url}">${url}</a>`;
           sgMail.setApiKey(process.env.SENDGRID_API_KEY);
