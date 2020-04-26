@@ -281,6 +281,7 @@ module.exports = class baseController {
     const html = `Please click on this link to confirm your email: <a href="${url}">${url}</a>`;
     var resp = baseController.attachToken(user, login);
     baseController.sendMail(user.email, apptype, subject, text, html).then((data) => {
+        console.log(data);
           baseController.attachToken(user, login).then((response) => {
               res.json(response)
           })
