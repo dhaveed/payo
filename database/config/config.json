@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "sec_user",
-    "password": "zAn6xfh123.",
+    "username": "root",
+    "password": "",
     "database": "payo",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -20,8 +20,8 @@
     }
   },
   "production": {
-    "username": "sec_user",
-    "password": "zAn6xfh123.",
+    "username": "root",
+    "password": "",
     "database": "payo",
     "host": "127.0.0.1",
     "dialect": "mysql",
