@@ -242,7 +242,7 @@ module.exports = class userModelClass extends Sequelize.Model {
 
   static async verify(user, number){
     return new Promise((resolve, reject) =>{
-      db.findOne({"where":{"id" : user}})
+      db.findOne({"where":{"email" : user}})
       .then(user=>{
         if(user && user.status == number){
           user.update({"activation":true});
