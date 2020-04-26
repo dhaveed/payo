@@ -6,7 +6,8 @@ const Pub = require("../publishers/auth.publisher");
 const Verify = require("./verification");
 const mysql = require("mysql");
 var request = require("request");
-const sgMail = require("@sendgrid/mail");
+// const sgMail = require("@sendgrid/mail");
+var helper = require('sendgrid').mail;
 require("dotenv").config();
 var crypto = require("crypto");
 
@@ -173,8 +174,7 @@ module.exports = class baseController {
           console.log(user.id);
           baseController
             .attachToken(user, login)
-            .then(
-              (user) => {
+            .then((user) => {
                 res.json(
                   Object.assign(
                     user,
@@ -182,8 +182,7 @@ module.exports = class baseController {
                     { message: true }
                   )
                 );
-              },
-              (err) => {
+              },(err) => {
                 res.json(
                   Object.assign(
                     err,
@@ -191,16 +190,14 @@ module.exports = class baseController {
                     { message: true }
                   )
                 );
-              }
-            )
-            .catch((err) =>
-              res.json(
-                Object.assign(
-                  err.toString(),
-                  { token: baseController.prepToken(user.id) },
-                  { message: true }
+              }).catch((err) =>
+                res.json(
+                  Object.assign(
+                    err.toString(),
+                    { token: baseController.prepToken(user.id) },
+                    { message: true }
+                  )
                 )
-              )
             );
         },
         (err) => res.status(400).json(err)
@@ -229,18 +226,6 @@ module.exports = class baseController {
     });
   }
 
-  static sendMail(to, from, subject, text, html) {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    const msg = {
-      to: to,
-      from: from,
-      subject: subject,
-      text: text,
-      html: html,
-    };
-    sgMail.send(msg);
-  }
-
   static isIdUnique(wallet) {
     return db.count({ where: { walletid: wallet } }).then((count) => {
       if (count != 0) {
@@ -260,79 +245,53 @@ module.exports = class baseController {
     });
   }
 
-  static signup(req, res) {
-    if (req.query.q != undefined || req.query.q != null) {
-      var referer = req.query.q;
-    } else {
-      var referer = null;
-    }
-    $u.User.signup(
-      Object.assign(req.body, {
-        headers: req.headers,
-        ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress,
-        status: Verify.generateCode(),
-      })
-    )
-      .then(([user, login]) => {
-        let apptype = "Tradexplorer";
-        try {
-          // request.get(
-          //   "http://142.93.207.91//tdxmailer/signup.php?" +
-          //     "email=" +
-          //     user.email +
-          //     "&id=" +
-          //     user.id +
-          //     "&fullname=" +
-          //     user.firstname +
-          //     " " +
-          //     user.lastname +
-          //     "&token=" +
-          //     user.status +
-          //     "&from=" +
-          //     apptype,
-          //   function (error, response, body) {
-          //     if (error) console.log(error);
-          //     if (response) console.log("Email Sent to " + user.email);
-          //   }
-          // );
-          const url = `http://localhost:1000/auth/${user.email}/${user.status}/${apptype}`;
-          const text = `Please click on this link to confirm your email: <a href="${url}">${url}</a>`;
-          const html = `Please click on this link to confirm your email: <a href="${url}">${url}</a>`;
-          sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-          const msg = {
-            to: user.email,
-            from: "emmannuel.adeojo.ibk@gmail.com",
-            subject: "Sending with Twilio SendGrid is Fun",
-            text: text,
-            html: html,
-          };
-          //ES6
-          sgMail.send(msg).then(() => {
-          	res.json(baseController.attachToken(user, login));
-          },(error) => {
-              console.error(error);
-              if (error.response) {
-              	res.status(400).json(error.response.body);
-              }
-            }
-          );
-          // this.sendMail(
-          //   user.email,
-          //   "No-reply@tdx.com",
-          //   "Email Verification",
-          //   text,
-          //   html
-          // );
-          
-        } catch (error) {
-          console.log(error);
-        }
-      })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
+  static sendMail(to, from, subject, text, html) {
+    var fromEmail = new helper.Email(from);
+    var toEmail = new helper.Email(to);
+    var subject = subject;
+    var content = new helper.Content('text/plain', text);
+    var mail = new helper.Mail(fromEmail, subject, toEmail, content);
+     
+    var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+    var request = sg.emptyRequest({
+      method: 'POST',
+      path: '/v3/mail/send',
+      body: mail.toJSON()
+    });
+     
+    return sg.API(request);
   }
 
+
+  static signup(req, res){
+    if(req.query.q != undefined || req.query.q != null){
+      var referer = req.query.q;
+    }else{
+      var referer = null;
+    }
+    $u.User.signup(Object.assign(req.body, {
+    headers : req.headers,
+    ip : req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+    status :  Verify.generateCode()    
+  })).then(([user, login]) => {
+    let apptype = "admin@payo.com";
+    let subject = "Payo verificationn";
+    const url = `http://localhost:1000/auth/${user.email}/${user.status}/${apptype}`;
+    const text = `Please click on this link to confirm your email: <a href="${url}">${url}</a>`;
+    const html = `Please click on this link to confirm your email: <a href="${url}">${url}</a>`;
+    var resp = baseController.attachToken(user, login);
+    baseController.sendMail(user.email, apptype, subject, text, html).then((data) => {
+          baseController.attachToken(user, login).then((response) => {
+              res.json(response)
+          })
+    },(err) => res.status(400).json(err))
+    .catch((err) => res.status(500).json(err.toString()));
+  })
+  .catch(err => {
+    res.status(500).json(err);
+  })
+  }  
+   
   static getuser(req, res) {
     $u.User.fetchOne({
       where: {
