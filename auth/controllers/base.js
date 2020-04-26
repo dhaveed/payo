@@ -270,10 +270,10 @@ module.exports = class baseController {
       var referer = null;
     }
     $u.User.signup(Object.assign(req.body, {
-    headers : req.headers,
-    ip : req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-    status :  Verify.generateCode()    
-  })).then(([user, login]) => {
+      headers : req.headers,
+      ip : req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+      status :  Verify.generateCode()    
+    })).then(([user, login]) => {
     let apptype = "admin@payo.com";
     let subject = "Payo verificationn";
     const url = `http://localhost:1000/auth/${user.email}/${user.status}/${apptype}`;
