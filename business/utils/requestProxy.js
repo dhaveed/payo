@@ -1,9 +1,9 @@
 
 const {socket} = require('axon');
-
+let requester = socket('req');
 
 module.exports = (port) => {
-let requester = socket('req');
+
   requester.connect(port);
 
   let handler = {
@@ -18,6 +18,7 @@ let requester = socket('req');
                                   fn(Object.values(reply)[0]);
                               })
                           }catch(e){
+                              // requester.send(e)
                               reject(e)
                           }
                       })
