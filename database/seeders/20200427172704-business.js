@@ -7,7 +7,7 @@ module.exports = {
     let data = [];
     let amount = 50;
 
-    while (--amount) {
+    while (amount--) {
       data.push({
         businessEmail: faker.internet.email(),
         businessName: faker.company.companyName(),
