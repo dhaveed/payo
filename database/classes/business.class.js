@@ -33,8 +33,7 @@ module.exports = class businessModelClass extends Sequelize.Model {
         .then((isUnique) => {
           if (isUnique) {
             return new Promise((resolve, reject) => {
-              console.log(Object.assign({ businessEmail }, body));
-              return Promise(db.create(Object.assign({ businessEmail, user_id }, body)))
+              return Promise.all([db.create(Object.assign({ businessEmail, user_id }, body))])
                 .then(resolve, reject)
                 .catch((reject) =>
                   console.log("Error: Cannot create business")

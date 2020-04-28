@@ -27,12 +27,13 @@ module.exports = class Controller {
     $b.business
       .createBusiness(Object.assign(req.body), req.params.userId)
       .then(
-        (business) => {
-          console.log("Successful");
+        ([business]) => {
+          // console.log(business);
           $b.business_settings
-            .create(Object.assign(business.id))
+            .create(business)
             .then(
-              () => console.log("Settings Created"),
+              (response) =>
+                res.status(200).json({ message: "Settings Created" }),
               (err) => res.status(400).json(err)
             )
             .catch((err) => res.status(500).json(err.toString()));
