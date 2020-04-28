@@ -22,8 +22,24 @@ module.exports = class transactionModelClass extends Sequelize.Model {
     return data;
   }
 
-  static create(body){
-    return db.create(body);
+  static generateKey() {
+    
+    return {
+      api_key: "",
+      secret_key: "",
+      enc_key: "",
+    }
+  }
+
+  static create(business_id){
+    return new Promise((resolve, reject) => {
+      console.log(Object.assign({ business_id }));
+      return Promise(db.create(Object.assign({ business_id })))
+        .then(resolve, reject)
+        .catch((reject) =>
+          console.log("Error: Cannot create business")
+        );
+    });
   }
 
   static getById({id, login, ...query}){
