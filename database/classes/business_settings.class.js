@@ -27,11 +27,7 @@ module.exports = class transactionModelClass extends Sequelize.Model {
   static create({ id, user_id }) {
     console.log(id, user_id);
     return new Promise((resolve, reject) => {
-      return Promise.all([
-        db.create(
-          Object.assign({ business_id: id, user_id }, this.generateKey())
-        ),
-      ])
+      db.create(Object.assign({ business_id: id, user_id }, this.generateKey()))
         .then(resolve, reject)
         .catch((reject) => console.log("Error: Cannot create business"));
     });

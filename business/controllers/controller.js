@@ -27,7 +27,7 @@ module.exports = class Controller {
     $b.business
       .createBusiness(Object.assign(req.body), req.params.userId)
       .then(
-        ([business]) => {
+        (business) => {
           // console.log(business);
           $b.business_settings
             .create(business)
