@@ -10,8 +10,8 @@
     }
   },
   "test": {
-    "username": "root",
-    "password": "",
+    "username": "sec_user",
+    "password": "zAn6xfh123.",
     "database": "payo",
     "host": "127.0.0.1",
     "dialect": "mysql",
