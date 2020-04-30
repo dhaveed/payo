@@ -2,6 +2,7 @@ const $b = require("../requesters/database");
 
 const joi = require("joi");
 // const joi = require('@hapi/joi');
+
 var request = require("request");
 require("dotenv").config();
 
@@ -43,3 +44,4 @@ module.exports = class Controller {
       .catch((err) => res.status(500).json(err.toString()));
   }
 };
+

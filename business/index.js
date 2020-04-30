@@ -1,9 +1,11 @@
 const app = require('express')();
 const bp = require('body-parser');
 const cors = require('cors');
-var Fingerprint = require('express-fingerprint')
+
 // const verifyToken = require('./utils/verifyToken');
-const routes = require('./routes/business');
+
+const routes = require('./routes/businessRoute');
+
 const path = require('path');
 const port = 2332;
 
