@@ -84,7 +84,7 @@ module.exports = {
       latitude: {
         type: Sequelize.STRING
       },
-      logitude: {
+      longitude: {
         type: Sequelize.STRING
       },      
       deleted: {
