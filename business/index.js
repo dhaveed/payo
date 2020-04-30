@@ -3,30 +3,23 @@ const bp = require('body-parser');
 const cors = require('cors');
 
 // const verifyToken = require('./utils/verifyToken');
+
 const routes = require('./routes/businessRoute');
+
 const path = require('path');
 const port = 2332;
-require('dotenv').config()
 
 app.use(cors())
 // app.use(verifyToken);
 app.use(bp.json());
 app.use(bp.urlencoded({extended : true}));
 
-app.use(Fingerprint({
-	parameters:[
-		// Defaults
-		Fingerprint.useragent,
-		Fingerprint.acceptHeaders,
-		Fingerprint.geoip,
-	]
-}))
 
-app.get('/card_charge',  (req,res)=>{
+app.get('/business',  (req,res)=>{
 	res.sendFile(path.join(__dirname, 'public/index.html'))
 })
 
-app.use('/charge_card', routes);
+app.use('/business', routes);
 
 
 app.listen(port, () => {
