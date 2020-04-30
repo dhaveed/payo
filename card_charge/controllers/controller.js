@@ -107,31 +107,45 @@ module.exports = class Controller{
         "customercandosubsequentnoauth": resp.body.data.customercandosubsequentnoauth
       }
 
-      var CustomerTransRespone = {
-        "customer": resp.body.datacustomer,
-        "id": resp.body.data.id,
-        "phone": resp.body.data.phone,
-        "fullName": resp.body.data.fullName,
-        "customertoken": resp.body.data.customertoken,
-        "email": resp.body.data.email,
-        "createdAt": resp.body.data.createdAt,
-        "updatedAt": resp.body.data.updatedAt,
-        "deletedAt": resp.body.data.deletedAt,
-        "AccountId": resp.body.data.AccountId
+      var CustomerTransResponse = {
+        "customer": resp.body.data.customer.fullName,
+        "id": resp.body.data.customer.id,
+        "phone": resp.body.data.customer.phone,
+        "fullName": resp.body.data.customer.fullName,
+        "customertoken": resp.body.data.customer.customertoken,
+        "email": resp.body.data.customer.email,
+        "createdAt": resp.body.data.customer.createdAt,
+        "updatedAt": resp.body.data.customer.updatedAt,
+        "deletedAt": resp.body.data.customer.deletedAt,
+        "AccountId": resp.body.data.customer.AccountId
       }
-
-      res.json(resp);
+      // console.log(resp);
+      $c.Initiate_payment.create(initiateTransRespone).then((data) => {
+          $c.Initiate_payment.createCustomer(CustomerTransResponse).then((data2) => { 
+            res.json(resp)
+          }, (err) => { res.status(400).json(err) }).catch((err) => res.status(500).json(err.toString()));
+      }, (err) => {res.status(400).json(err)}).catch((err) => res.status(500).json(err.toString()));
+      
+      // res.json(resp);
       
     }).catch(err => {
-          console.log(err);
+          // console.log(err);
           res.status(500).json(err.toString())
     })
   }
 
   static validateTransaction(req, res){
     rave.Card.validate(req.body).then(response => {
-            console.log(response.body.data.tx);
+        var TransResponse = {
+            "transaction_reference": req.body.transaction_reference,
+            "responsecode":response.body.data.data.responsecode,
+            "responsetoken":response.body.data.data.responsecode,
+            "responsemessage":response.body.data.data.responsecode
+        }
+        $c.Initiate_payment.completeTransaction(TransResponse).then((data) => {
             res.json(response);
-      })
+        })
+        // console.log(response.body.data.data);
+    })
   }
 }
