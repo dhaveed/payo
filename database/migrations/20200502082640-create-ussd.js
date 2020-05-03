@@ -1,95 +1,57 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('ussds', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      firstname: {
-        type: Sequelize.STRING
-      },
-      lastname: {
-        type: Sequelize.STRING
-      },
-      phone: {
-        type: Sequelize.STRING
-      },
-      password: {
-        type: Sequelize.STRING
-      },
-      accountType: {
-        type: Sequelize.STRING
-      },
-      pictureUrl: {
-        type: Sequelize.STRING
-      },
-      referalId: {
-        type: Sequelize.STRING
-      },
-      rcountry: {
-        type: Sequelize.STRING
-      },
-      token: {
-        type: Sequelize.STRING
-      },
-      deviceId: {
-        type: Sequelize.STRING
-      },
-      role: {
-        type: Sequelize.STRING
-      },
-      address:{
-        type: Sequelize.STRING
-      },
-      gender: {
-        type: Sequelize.STRING
-      },
       status: {
         type: Sequelize.STRING
       },
-      ustatus: {
-        type: Sequelize.INTEGER
-      },
-      activation: {
+      message: {
         type: Sequelize.STRING
       },
-      location: {
+      amount: {
         type: Sequelize.STRING
       },
-      city: {
-        type: Sequelize.STRING
-      },     
-      dob: {
+      type: {
         type: Sequelize.STRING
       },
-      headers:{
+      redirect: {
         type: Sequelize.STRING
       },
-      ip:{
+      note: {
         type: Sequelize.STRING
       },
-      referer:{
+      transaction_date: {
         type: Sequelize.STRING
       },
-      usertype: {
+      transaction_reference: {
         type: Sequelize.STRING
       },
-      latitude: {
+      flw_reference: {
         type: Sequelize.STRING
       },
-      longitude: {
+      redirect_url: {
         type: Sequelize.STRING
-      },      
-      deleted: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
+      },
+      payment_code: {
+        type: Sequelize.STRING
+      },
+      type_data: {
+        type: Sequelize.STRING
+      },
+      meta_data: {
+        type: Sequelize.STRING
+      },
+      response_code: {
+        type: Sequelize.STRING
+      },
+      response_message: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -104,6 +66,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('ussds');
   }
 };

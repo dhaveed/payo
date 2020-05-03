@@ -1,26 +1,29 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('business_settings', {
+    return queryInterface.createTable('transaction_responses', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
-        type: Sequelize.INTEGER
-      },
-      business_id: {
-        type: Sequelize.INTEGER
-      },
-      api_key: {
+      transaction_reference: {
         type: Sequelize.STRING
       },
-      secret_key: {
+      responsecode: {
         type: Sequelize.STRING
       },
-      enc_key: {
+      responsetoken: {
+        type: Sequelize.STRING
+      },
+      responsemessage: {
+        type: Sequelize.STRING
+      },  
+      user_token: {
+        type: Sequelize.STRING
+      },
+      embed_token: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -36,6 +39,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('business_settings');
+    return queryInterface.dropTable('transaction_responses');
   }
 };

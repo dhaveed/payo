@@ -1,26 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('business_settings', {
+    return queryInterface.createTable('card_data', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      card_id: {
         type: Sequelize.INTEGER
       },
-      business_id: {
-        type: Sequelize.INTEGER
-      },
-      api_key: {
+      embedtoken: {
         type: Sequelize.STRING
       },
-      secret_key: {
+      shortcode: {
         type: Sequelize.STRING
       },
-      enc_key: {
+      expiry: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -36,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('business_settings');
+    return queryInterface.dropTable('card_data');
   }
 };

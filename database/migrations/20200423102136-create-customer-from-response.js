@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('customer_from_responses', {
+    return queryInterface.createTable('customer_froms', {
       pid: {
         allowNull: false,
         autoIncrement: true,
@@ -40,15 +40,17 @@ module.exports = {
       },
       pcreatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       pupdatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('customer_from_responses');
+    return queryInterface.dropTable('customer_froms');
   }
 };

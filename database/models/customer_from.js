@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const customer_from_response = sequelize.define('customer_from_response', {
+  const customer_from = sequelize.define('customer_froms', {
     pid: {
         type: DataTypes.INTEGER,
         primaryKey: true
@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
     fullName: DataTypes.STRING,
     customertoken: DataTypes.STRING,
     email: DataTypes.STRING,
-    createdAt: DataTypes.STRING,
-    updatedAt: DataTypes.STRING,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
     deletedAt: DataTypes.STRING,
     AccountId: DataTypes.STRING
   }, {});
-  customer_from_response.associate = function(models) {
+  customer_from.associate = function(models) {
     // associations can be defined here
   };
-  return customer_from_response;
+  return customer_from;
 };

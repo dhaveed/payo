@@ -172,9 +172,7 @@ module.exports = class baseController {
         ([login, user]) => {
           // console.log("From dologin");
           console.log(user.id);
-          baseController
-            .attachToken(user, login)
-            .then((user) => {
+          baseController.attachToken(user, login).then((user) => {
                 res.json(
                   Object.assign(
                     user,

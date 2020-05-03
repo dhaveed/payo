@@ -1,54 +1,53 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('customers_responses', {
-      pid: {
+    return queryInterface.createTable('cards', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
+      vpaymentid: {
+        type: Sequelize.INTEGER
+      },
+      expirymonth: {
         type: Sequelize.STRING
       },
-      customer: {
+      expiryyear: {
         type: Sequelize.STRING
       },
-      phone: {
+      cardBIN: {
         type: Sequelize.STRING
       },
-      fullName: {
+      last4digits: {
         type: Sequelize.STRING
       },
-      customertoken: {
+      brand: {
         type: Sequelize.STRING
       },
-      email: {
+      card_tokens: {
+        type: Sequelize.INTEGER
+      },
+      type: {
+        type: Sequelize.STRING
+      },
+      life_time_token: {
         type: Sequelize.STRING
       },
       createdAt: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
-        type: Sequelize.STRING
-      },
-      deletedAt: {
-        type: Sequelize.STRING
-      },
-      AccountId: {
-        type: Sequelize.STRING
-      },
-      pcreatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      },
-      pupdatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('customers_responses');
+    return queryInterface.dropTable('cards');
   }
 };
