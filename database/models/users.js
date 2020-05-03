@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     referer:DataTypes.STRING,
     usertype:DataTypes.STRING,
     latitude:DataTypes.STRING,
-    logitude:DataTypes.STRING,
+    longitude:DataTypes.STRING,
     deleted: DataTypes.BOOLEAN
   }, {});
   SequelizeTokenify.tokenify(users, {
