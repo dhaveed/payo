@@ -11,10 +11,13 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER
       },
+      business_id: {
+        type: Sequelize.INTEGER
+      },
       api_key: {
         type: Sequelize.STRING
       },
-      secrete_key: {
+      secret_key: {
         type: Sequelize.STRING
       },
       enc_key: {
