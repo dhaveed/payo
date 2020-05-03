@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('initiate_payment', {
+    return queryInterface.createTable('initiate_payments', {
       pid: {
         allowNull: false,
         autoIncrement: true,
@@ -125,13 +125,15 @@ module.exports = {
       customercandosubsequentnoauth: {
         type: Sequelize.STRING
       },
-      createdAt: {
+      pcreatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
-      updatedAt: {
+      pupdatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     },{
     engine: 'MYISAM', // default: 'InnoDB'
@@ -139,6 +141,6 @@ module.exports = {
   });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('initiate_payment');
+    return queryInterface.dropTable('initiate_payments');
   }
 };

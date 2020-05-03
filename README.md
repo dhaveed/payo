@@ -69,6 +69,7 @@ $ cd database
 and execute 
 ```
 sequelize db:migrate
+sequelize db:seed:all 
 ```
 
 ### Committing Changes

@@ -5,8 +5,8 @@ let responder = socket('rep');
 
 const Model = {
   User : require('../classes/users.class'),
-  initiate_payment : require('../classes/initiate_payment.class'),
-  business_settings : require('../classes/business_settings.class')
+  Initiate_payment : require('../classes/initiate_payment.class'),
+  Business_settings : require('../classes/business_settings.class')
 }
  
 

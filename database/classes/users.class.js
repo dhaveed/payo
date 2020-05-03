@@ -7,10 +7,10 @@ const db = require('../models').users;
 
  
 const bioString =  (val) => {
-    let bios = [
+    let info = [
       {"info3" : ["fullname" , `Adeojo Emmanuel imm,  professor backend dev`]}
     ]
-    return bios[val]
+    return info[val]
 }
 
  
@@ -129,7 +129,7 @@ module.exports = class userModelClass extends Sequelize.Model {
 
 
   static signup({email, headers, ip, phone, rcountry, ...body}){
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
       this.isIdUnique(email).then(isUnique => {
           if(isUnique){
             return new Promise((resolve, reject) => {

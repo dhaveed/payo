@@ -1,49 +1,37 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('customer_froms', {
-      pid: {
+    return queryInterface.createTable('transaction_responses', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      customer: {
+      transaction_reference: {
         type: Sequelize.STRING
       },
-      id: {
+      responsecode: {
         type: Sequelize.STRING
       },
-      phone: {
+      responsetoken: {
         type: Sequelize.STRING
       },
-      fullName: {
+      responsemessage: {
+        type: Sequelize.STRING
+      },  
+      user_token: {
         type: Sequelize.STRING
       },
-      customertoken: {
-        type: Sequelize.STRING
-      },
-      email: {
+      embed_token: {
         type: Sequelize.STRING
       },
       createdAt: {
-        type: Sequelize.STRING
-      },
-      updatedAt: {
-        type: Sequelize.STRING
-      },
-      deletedAt: {
-        type: Sequelize.STRING
-      },
-      AccountId: {
-        type: Sequelize.STRING
-      },
-      pcreatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
-      pupdatedAt: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
@@ -51,6 +39,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('customer_froms');
+    return queryInterface.dropTable('transaction_responses');
   }
 };

@@ -1,49 +1,31 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('customer_froms', {
-      pid: {
+    return queryInterface.createTable('card_data', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      customer: {
+      card_id: {
+        type: Sequelize.INTEGER
+      },
+      embedtoken: {
         type: Sequelize.STRING
       },
-      id: {
+      shortcode: {
         type: Sequelize.STRING
       },
-      phone: {
-        type: Sequelize.STRING
-      },
-      fullName: {
-        type: Sequelize.STRING
-      },
-      customertoken: {
-        type: Sequelize.STRING
-      },
-      email: {
+      expiry: {
         type: Sequelize.STRING
       },
       createdAt: {
-        type: Sequelize.STRING
-      },
-      updatedAt: {
-        type: Sequelize.STRING
-      },
-      deletedAt: {
-        type: Sequelize.STRING
-      },
-      AccountId: {
-        type: Sequelize.STRING
-      },
-      pcreatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
-      pupdatedAt: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
@@ -51,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('customer_froms');
+    return queryInterface.dropTable('card_data');
   }
 };

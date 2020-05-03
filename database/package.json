@@ -28,5 +28,8 @@
     "node-bcrypt": "0.0.1",
     "sequelize": "^5.21.2",
     "sequelize-tokenify": "^0.2.2"
+  },
+  "devDependencies": {
+    "Faker": "^0.7.2"
   }
 }
